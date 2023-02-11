@@ -12,6 +12,7 @@ public class Main {
     private static final String DB_PASSWORD = "12345";
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
 
+    int a;
     public static void main(String[] args) throws Exception{
         boolean menu = true;
         Scanner sc = new Scanner(System.in);
