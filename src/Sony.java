@@ -1,5 +1,12 @@
 import java.sql.*;
-
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Scanner;
+import java.util.Stack;
 public class Sony extends TV{
     private static final String DB_USERNAME = "postgres";
     private static final String DB_PASSWORD = "12345";
