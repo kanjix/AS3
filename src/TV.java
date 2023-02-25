@@ -1,2 +1,2 @@
-public abstract class TV {
+public abstract class TV implements Info{
 }

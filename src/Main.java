@@ -21,7 +21,7 @@ public class Main {
             System.out.println("Choose category: ");
             System.out.println("1. TV");
             System.out.println("2. Phone");
-            System.out.println("3. Accessory");
+            System.out.println("3. Charger");
             System.out.println("4. Tablet");
             System.out.println("5. Laptop");
             System.out.println("0. Exit");
@@ -42,9 +42,9 @@ public class Main {
                 }
             }
             else if(num == 3){
-                boolean accessoryMenu = true;
-                while (accessoryMenu){
-                    accessoryMenu = accessoryChargerMenu();
+                boolean chargerMenu = true;
+                while (chargerMenu){
+                    chargerMenu = ChargerMenu();
                 }
             }
             else if(num == 4){
@@ -91,58 +91,16 @@ public class Main {
         return true;
     }
     public static void tvSamsungMenu() throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from tv_tv order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("Samsung");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("resolution") + " " +
-                        result.getString("type of display") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        TV tv = new SamsungTV();
+        tv.characteristics();
     }
     public static void tvSonyMenu() throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from tv_tv order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("Sony");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("resolution") + " " +
-                        result.getString("type of display") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        TV tv = new Sony();
+        tv.characteristics();
     }
     public static void tvLGMenu() throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from tv_tv order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("LG");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("resolution") + " " +
-                        result.getString("type of display") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        TV tv = new LG();
+        tv.characteristics();
     }
     public static boolean phonesMenu() throws Exception{
         Scanner sc = new Scanner(System.in);
@@ -169,7 +127,7 @@ public class Main {
         }
         return true;
     }
-    public static boolean accessoryChargerMenu()throws Exception{
+    public static boolean ChargerMenu()throws Exception{
         Scanner sc = new Scanner(System.in);
         System.out.println("Select type:");
         System.out.println("1. Type C");
@@ -195,49 +153,16 @@ public class Main {
         return true;
     }
     public static void lightning() throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from accessories order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("type").compareTo("Lightning");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("name") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Charger charger = new ChargerLightning();
+        charger.characteristics();
     }
     public static void microUSB()throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from accessories order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("type").compareTo("microUSB");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("name") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Charger charger = new ChargerMicroUSB();
+        charger.characteristics();
     }
     public static void TypeC()throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from accessories order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("type").compareTo("Adapter");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("name") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Charger charger = new ChargerTypeC();
+        charger.characteristics();
     }
     public static boolean tabletElectronicMenu() throws Exception{
         Scanner sc = new Scanner(System.in);
@@ -265,112 +190,28 @@ public class Main {
         return true;
     }
     public static void tabletHuaweiMenu() throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from tablets order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("Huawei");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("rom") + " " +
-                        result.getFloat("display") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Huawei huawei = new HuaweiTablet();
+        huawei.characteristics();
     }
     public static void tabletAppleMenu()throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from tablets order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("Apple");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("rom") + " " +
-                        result.getFloat("display") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Apple apple = new AppleTablet();
+        apple.characteristics();
     }
     public static void tabletXiaomiMenu()throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from tablets order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("Xiaomi");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("rom") + " " +
-                        result.getFloat("display") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Xiaomi xiaomi = new XiaomiTablet();
+        xiaomi.characteristics();
     }
     public static void phoneSamsungMenu() throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from phones order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("Samsung");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("rom") + " " +
-                        result.getString("color") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Samsung samsung = new SamsungPhone();
+        samsung.characteristics();
     }
     public static void phoneAppleMenu()throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from phones order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("IPhone");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("rom") + " " +
-                        result.getString("color") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Apple apple = new ApplePhone();
+        apple.characteristics();
     }
     public static void phoneXiaomiMenu()throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from phones order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("Xiaomi");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("rom") + " " +
-                        result.getString("color") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Xiaomi xiaomi = new XiaomiPhone();
+        xiaomi.characteristics();
     }
     public static boolean laptopsMenu()throws Exception{
         Scanner sc = new Scanner(System.in);
@@ -398,72 +239,15 @@ public class Main {
         return true;
     }
     public static void macbookMenu()throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from laptops order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("MacBook");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("rom") + " " +
-                        result.getFloat("Display") + " " +
-                        result.getString("color") + " " +
-                        result.getInt("ram") + " " +
-                        result.getString("os") + " " +
-                        result.getString("Type of RAM") + " " +
-                        result.getString("Chip") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Apple apple = new Macbook();
+        apple.characteristics();
     }
     public static void asusMenu()throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from laptops order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("ASUS");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("rom") + " " +
-                        result.getFloat("Display") + " " +
-                        result.getString("color") + " " +
-                        result.getInt("ram") + " " +
-                        result.getString("os") + " " +
-                        result.getString("Type of RAM") + " " +
-                        result.getString("Chip") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Asus asus = new AsusNotebook();
+        asus.characteristics();
     }
     public static void lenovoMenu()throws Exception{
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        Statement statement = connection.createStatement();
-        String SQL_SELECT_TASKS = "select * from laptops order by id";
-        ResultSet result = statement.executeQuery(SQL_SELECT_TASKS);
-        while(result.next()){
-            int num = -1000;
-            num = result.getString("brand").compareTo("Lenovo");
-            if(num == 0){
-                //System.out.println(result.getString("brand") + " " + result.getString("model") + " " + result.getInt("rom") + " " + result.getFloat("Display") + " " + result.getString("color") + " " + result.getInt("price") + " " + result.getInt("RAM"));
-                System.out.println(result.getString("brand") + " " +
-                        result.getString("model") + " " +
-                        result.getInt("rom") + " " +
-                        result.getFloat("Display") + " " +
-                        result.getString("color") + " " +
-                        result.getInt("ram") + " " +
-                        result.getString("os") + " " +
-                        result.getString("Type of RAM") + " " +
-                        result.getString("Chip") + " " +
-                        result.getInt("price") + " tenge");
-            }
-        }
+        Lenovo lenovo = new LenovoNotebook();
+        lenovo.characteristics();
     }
 }

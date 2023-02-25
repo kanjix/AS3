@@ -1,2 +1,3 @@
-public abstract class Charger {
+public abstract class Charger implements Info{
+
 }
